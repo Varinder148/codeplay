@@ -1,0 +1,25 @@
+@import "../../commonStyles";
+
+.editor {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow: hidden;
+  border-right: 1px solid black;
+  .options{
+    display: grid;
+    grid-auto-flow: column;
+    width:100%;
+  }
+  .btn {
+    height:2rem;
+    margin: 5px ;
+    padding: 5px ;
+    background: $primaryColor;
+    color:$secColor;
+    border:none;
+    border:1px solid $secColor;
+    &:nth-child(n+3){
+      justify-self: flex-end;
+    }
+  }
+}

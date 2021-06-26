@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import Editor from "./components/editor/editor.component";
+import Result from "./components/result/result.component";
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  let [editor, setEditor] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="nav-wrapper">
+        <nav>
+          <h1>CodeEditor</h1>
+        </nav>
+      </div>
+      <div className="app">
+        <Editor setEditor={setEditor} />
+        <Result editor={editor} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
