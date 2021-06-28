@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./editor.style.scss";
 import AceEditor from "react-ace";
 
@@ -33,21 +33,28 @@ const Editor = ({ setEditor }) => {
     document.body.removeChild(element);
   };
 
-  return (
-    <>
-      <div className="editor">
-        <div className="options">
-          <button className="btn" onClick={() => setEditorvalue("")}>
-            Reset
-          </button>
+  const handleSave = (e) => {
+    if (e.ctrlKey && e.keyCode == 83) {
+      e.preventDefault();
+      saveFile();
+    }
+  };
 
-          <button className="btn" onClick={downloadFile}>
-            Download file
-          </button>
-          <button className="btn" onClick={saveFile}>
-            Run
-          </button>
-        </div>
+  return (
+    <div className='editor-wrapper border'>
+      <div className="options">
+        <button className="btn" onClick={() => setEditorvalue("")}>
+          Reset
+        </button>
+
+        <button className="btn" onClick={downloadFile}>
+          Download file
+        </button>
+        <button className="btn" onClick={saveFile}>
+          Run
+        </button>
+      </div>
+      <div className="editor" onKeyDown={handleSave}>
         <AceEditor
           placeholder="Write your code here"
           mode="javascript"
@@ -64,7 +71,7 @@ const Editor = ({ setEditor }) => {
           }}
         />
       </div>
-    </>
+    </div>
   );
 };
 
